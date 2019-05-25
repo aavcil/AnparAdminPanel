@@ -1,0 +1,172 @@
+<div class="container">
+ 
+  <div class="row">
+
+    <div class="col">
+      <form [formGroup]="categoriesAddForm" (ngSubmit)="addCategory()" class="form-cityadd">
+        <h2 class="mt-3 pt-3"> Yeni Bir Kategori Ekle</h2>
+        <div class="form-group">
+          <input type="text" id="categoryName" formControlName="categoryName" class="form-control"
+            placeholder="Kategori İsmi Girin" autofocus>
+          <span class="help-block"
+            *ngIf="categoriesAddForm.get('categoryName').hasError('required') && categoriesAddForm.get('categoryName').touched">
+            Kategori Adı Girmek Zorunludur</span>
+        </div>
+        <div class="form-group">
+          <select id="categoryId" class="form-control" formControlName="titleId" name="titleId">
+            <option value="" selected="selected" disabled> Seçin</option>
+            <option value="0"> İç Cephe Ürünleri</option>
+            <option value="1"> Dış Cephe Ürünleri</option>
+            <option value="2"> Diğer Ürünler</option>
+
+          </select>
+          <span class="help-block"
+            *ngIf="categoriesAddForm.get('titleId').hasError('required') && categoriesAddForm.get('titleId').touched">
+            Kategori Seçmek Zorunludur.</span>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit"
+          [disabled]="!categoriesAddForm.valid">Ekle</button>
+        <h6>{{categoriesAddForm.value|json}}</h6>
+        <h6>{{categoriesAddForm.status|json}}</h6>
+
+      </form>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="col">
+
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Tümü">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let category of categories" style="padding:2%;">
+
+              <div class="alert alert-danger" *ngIf="category.titleId==0" role="alert">
+                {{category.categoryName}}
+                <button type="button" class="ml-2 mb-1 close" (click)="delete(category.id)">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="alert alert-success" *ngIf="category.titleId==1" role="alert">
+                {{category.categoryName}}
+                <button type="button" class="ml-2 mb-1 close" (click)="delete(category.id)">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="alert alert-primary" *ngIf="category.titleId==2" role="alert">
+                  {{category.categoryName}}
+                  <button type="button" class="ml-2 mb-1 close" (click)="delete(category.id)">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+              <!-- <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-danger left">SİL</button>
+                    </div>
+                    <div style="text-align: right" *ngIf="category.interior">
+                      <span class="badge badge-pill badge-success">İç Mekan Ürünü</span>
+                    </div>
+                    <div style="text-align: right" *ngIf="!category.interior">
+                      <span class="badge badge-pill badge-warning">Dış Mekan Ürünü</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="İç Mekan Ürünler">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let category of in" style="padding:2%;">
+              <div class="alert alert-danger" role="alert">
+                {{category.categoryName}}
+                <button type="button" class="ml-2 mb-1 close" (click)="delete(category.id)">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <!-- <h2>{{category.categoryName}}</h2>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-danger left">SİL</button>
+                    </div>
+                    <div style="text-align: right" *ngIf="category.interior">
+                      <span class="badge badge-pill badge-success">İç Mekan Ürünü</span>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Dış Mekan Ürünler">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let category of out" style="padding:2%;">
+              <div class="alert alert-success" role="alert">
+                {{category.categoryName}}
+                <button type="button" class="ml-2 mb-1 close" (click)="delete(category.id)">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <!-- <h2>{{category.categoryName}}</h2>
+              <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-danger left">SİL</button>
+                    </div>
+                    <div style="text-align: right" *ngIf="category.interior">
+                      <span class="badge badge-pill badge-success">Dış Mekan Ürünü</span>
+
+                  </div>
+
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Diğer Ürünler">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let category of others" style="padding:2%;">
+              <div class="alert alert-primary" role="alert">
+                {{category.categoryName}}
+                <button type="button" class="ml-2 mb-1 close" (click)="delete(category.id)">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>             
+            </div>
+          </div>
+        </div>
+
+      </mat-tab>
+    </mat-tab-group>
+
+
+  </div>
+</div>
+

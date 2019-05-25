@@ -1,0 +1,123 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Tümü">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let product of products" style="padding:2%;">
+          <h2>{{product.title}}</h2>
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+              style="height: 225px; width: 100%; display: block;" src="https://localhost:44386/{{product.url}}"
+              data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text"> {{product.measure}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger left">SİL</button>
+                </div>
+              </div>
+              <div style="text-align: right" *ngIf="product.titleId==0">
+                <span class="badge badge-pill badge-success">İç Mekan Ürünü</span>
+              </div>
+              <div style="text-align: right" *ngIf="product.titleId==1">
+                <span class="badge badge-pill badge-warning">Dış Mekan Ürünü</span>
+              </div>
+              <div style="text-align: right" *ngIf="product.titleId==2">
+                  <span class="badge badge-pill badge-info">Diğer Ürünler</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="İç Mekan Ürünler">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let product of in" style="padding:2%;">
+         
+            <h2>{{product.title}}</h2>
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                style="height: 225px; width: 100%; display: block;" src="https://localhost:44386/{{product.url}}"
+                data-holder-rendered="true">
+              <div class="card-body">
+                <p class="card-text"> {{product.measure}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-danger left">SİL</button>
+                  </div>
+                </div>
+                <div style="text-align: right">
+                  <span class="badge badge-pill badge-success">İç Mekan Ürünü</span>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+    
+      </div>
+    </div>
+
+
+  </mat-tab>
+  <mat-tab label="Dış Mekan Ürünler">
+
+      <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let product of out" style="padding:2%;">
+             
+                <h2>{{product.title}}</h2>
+                <div class="card mb-4 shadow-sm">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                    style="height: 225px; width: 100%; display: block;" src="https://localhost:44386/{{product.url}}"
+                    data-holder-rendered="true">
+                  <div class="card-body">
+                    <p class="card-text"> {{product.measure}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-danger left">SİL</button>
+                      </div>
+                    </div>
+               
+                    <div style="text-align: right" >
+                      <span class="badge badge-pill badge-warning">Dış Mekan Ürünü</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+     
+        </div>
+
+  </mat-tab>
+  <mat-tab label="Diğer Ürünler">
+
+      <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let product of others" style="padding:2%;">
+             
+                <h2>{{product.title}}</h2>
+                <div class="card mb-4 shadow-sm">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                    style="height: 225px; width: 100%; display: block;" src="https://localhost:44386/{{product.url}}"
+                    data-holder-rendered="true">
+                  <div class="card-body">
+                    <p class="card-text"> {{product.measure}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-danger left">SİL</button>
+                      </div>
+                    </div>
+               
+                    <div style="text-align: right" >
+                      <span class="badge badge-pill badge-warning">Diğer Ürünler</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+     
+        </div>
+
+  </mat-tab>
+</mat-tab-group>

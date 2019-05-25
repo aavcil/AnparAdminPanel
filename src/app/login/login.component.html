@@ -1,0 +1,55 @@
+<!-- 
+
+<div class="container">
+	<div class="wrapper">
+		<form #loginForm="ngForm" (ngSubmit)="login()" class="form-signin">
+			<h3 class="form-signin-heading">Lütfen Giriş Yapın</h3>
+			<hr class="colorgraph"><br>
+
+			<input type="text" class="form-control" name="Username" placeholder="Username" required="" autofocus="" [(ngModel)]="model.username"
+			/>
+			<input type="password" class="form-control" name="Password" placeholder="Password" required="" [(ngModel)]="model.password"
+			/>
+
+			<button [disabled]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit">Giriş
+				Yap
+			</button>
+		</form>
+	</div>
+</div> -->
+
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('../../assets/bg-01.jpg');">
+			<div style="position: relative;left: -5%;"> <img src="../../assets/logo.png" />	
+			</div>
+			<br>
+			<div class="wrap-login100">
+				
+				<form class="login100-form validate-form" *ngIf="!isAuthenticated" #loginForm="ngForm" (ngSubmit)="login()">
+					<span class="login100-form-logo">
+						<i class="fa fa-user"></i>
+					</span>
+	
+					<span class="login100-form-title p-b-34 p-t-27">
+						Giriş 
+					</span>
+	
+					<div class="wrap-input100 validate-input row" data-validate="Enter username">
+						<i style="font-size: 1.5vw;text-align:  center;position:  relative;margin-top: 2%; " class="fa fa-user col-md-2"></i>
+						<input class="input100 col-md-10" type="text" name="userName" [(ngModel)]="loginUser.userName" required type="text" placeholder="User Name">
+					</div>
+					<div class="wrap-input100 validate-input row" data-validate="Enter Password">
+							<i style="font-size: 1.5vw;text-align:  center;position:  relative;margin-top: 2%; " class="fa fa-unlock col-md-2"></i>
+							<input class="input100 col-md-10" type="password" name="password" [(ngModel)]="loginUser.password" required type="password" placeholder="Password">
+						</div>
+					
+	
+					<div class="container-login100-form-btn">
+						<button  class="login100-form-btn" [disabled]="!loginForm.valid" name="Submit" value="Login" type="Submit">
+							Giriş Yap
+						</button>
+					</div>	
+				</form>
+			</div>
+		</div>
+	</div>

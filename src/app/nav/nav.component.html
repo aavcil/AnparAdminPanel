@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" *ngIf="isAuthenticated">
+    <a class="navbar-brand" href="#">ANPAR</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" [routerLink]="['/product']" routerLinkActive="router-link-active">Ürünler <span class="sr-only">(current)</span></a>
+            </li>   
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/productAdd']" routerLinkActive="router-link-active">Ürün Ekle</a>
+            </li>  
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/categoryAdd']" routerLinkActive="router-link-active">Kategori Ekle</a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/projects']" routerLinkActive="router-link-active">Projeler</a>
+              </li> 
+              <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/projectAdd']" routerLinkActive="router-link-active">Proje Ekle</a>
+                </li> 
+          </ul>
+
+      <button class="btn btn-secondary my-2 my-sm-0" (click)="logOut()"  type="submit">Çıkış</button>
+  
+  
+    </div>
+  </nav>

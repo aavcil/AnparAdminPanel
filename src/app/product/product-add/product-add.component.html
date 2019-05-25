@@ -1,0 +1,229 @@
+
+
+
+<mat-tab-group mat-align-tabs="center">
+
+    <mat-tab label="İç Mekan Ürünler">
+        <main role="main">
+            <div class="container">
+              <div class="row">
+                <form [formGroup]="productAddForm" (ngSubmit)="addProduct(0)" class="form-cityadd">
+                  <h2 class="mt-3 pt-3"> Yeni Bir Ürün Ekle</h2>
+                  <div class="form-group">
+                    <input type="text" id="title" formControlName="title" class="form-control" placeholder="Ürün İsmi Girin"
+                      >
+                    <span class="help-block" *ngIf="productAddForm.get('title').hasError('required') && productAddForm.get('title').touched">
+                      Ürün Adı Girmek Zorunludur</span>
+                  </div>
+          
+                  <div class="form-group">
+                      <label for="file">Resim Seçin</label><br>
+                      <input type="file" id="filePicker" (change)="handleFileSelect($event)" id="productImage" formControlName="productImage" accept="image/x-png,image/gif,image/jpeg">
+                  </div>
+                  <!-- <div class="form-group">
+                      <app-ngx-editor class="form-control" id="description" name="description" [placeholder]="'Buraya Ürün Açıklaması Giriniz.'"
+                        formControlName="description" [spellcheck]="true">
+                      </app-ngx-editor>
+            
+                      <span class="help-block" *ngIf="productAddForm.get('description').hasError('required') && productAddForm.get('description').touched">
+                        Not Girmek Zorunludur.</span>
+                    </div> -->
+                  <div class="form-group">
+                    <input type="text" id="measure" formControlName="measure" class="form-control" placeholder="Ürün Ölçülerini Girin"
+                      >
+                    <span class="help-block" *ngIf="productAddForm.get('measure').hasError('required') && productAddForm.get('measure').touched">
+                      Ölçü Girmek Zorunludur</span>
+                  </div>
+                <div class="form-group">
+                    <app-ngx-editor class="form-control" id="description" 
+                  name="description"
+                   [placeholder]="'Buraya Açıklama Giriniz.'"
+                    formControlName="description"
+                     [spellcheck]="true"
+                     [minHeight]="50"
+                    >
+                  </app-ngx-editor>
+                    <span class="help-block" *ngIf="productAddForm.get('description').hasError('required') && productAddForm.get('description').touched">
+                        Açıklama Girmek Zorunludur</span>
+                </div>
+                  <!-- <div class="form-group">       
+                      <select id="interior" class="form-control" formControlName="interior" name="interior">
+                          <option  value="true">İç Dekor Ürünü</option>       
+                          <option  value="false">Dış Dekor Ürünü</option>
+                        </select> 
+                    <span class="help-block" *ngIf="productAddForm.get('interior').hasError('required') && productAddForm.get('interior').touched">
+                      Ürün Tipi Seçmek Zorunludur.</span>
+                  </div>  -->
+                  <div class="form-group">         
+                      <select id="categoryId" class="form-control" formControlName="categoryId" name="categoryId">
+                         <option value="" selected="selected" disabled> Seçin</option>
+                          <option *ngFor="let category of categoriesIn" value="{{category.id}}"> {{category.categoryName}} </option>
+                            
+                      </select> 
+                    <span class="help-block" *ngIf="productAddForm.get('categoryId').hasError('required') && productAddForm.get('categoryId').touched">
+                      Kategori Seçmek Zorunludur.</span>
+                  </div> 
+          
+                  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!productAddForm.valid">Ekle</button>
+                  <h6>{{productAddForm.value|json}}</h6>
+                  <h6>{{productAddForm.status|json}}</h6>
+          
+                </form>
+          
+          
+              </div>
+            </div>
+          </main>
+  
+  
+    </mat-tab>
+    <mat-tab label="Dış Mekan Ürünler">
+        <main role="main">
+            <div class="container">
+              <div class="row">
+                <form [formGroup]="productAddForm" (ngSubmit)="addProduct(1)" class="form-cityadd">
+                  <h2 class="mt-3 pt-3"> Yeni Bir Ürün Ekle</h2>
+                  <div class="form-group">
+                    <input type="text" id="title" formControlName="title" class="form-control" placeholder="Ürün İsmi Girin"
+                      >
+                    <span class="help-block" *ngIf="productAddForm.get('title').hasError('required') && productAddForm.get('title').touched">
+                      Ürün Adı Girmek Zorunludur</span>
+                  </div>
+          
+                  <div class="form-group">
+                      <label for="file">Resim Seçin</label><br>
+                      <input type="file" id="filePicker" (change)="handleFileSelect($event)" id="productImage" formControlName="productImage" accept="image/x-png,image/gif,image/jpeg">
+                  </div>
+                  <!-- <div class="form-group">
+                      <app-ngx-editor class="form-control" id="description" name="description" [placeholder]="'Buraya Ürün Açıklaması Giriniz.'"
+                        formControlName="description" [spellcheck]="true">
+                      </app-ngx-editor>
+            
+                      <span class="help-block" *ngIf="productAddForm.get('description').hasError('required') && productAddForm.get('description').touched">
+                        Not Girmek Zorunludur.</span>
+                    </div> -->
+                  <div class="form-group">
+                    <input type="text" id="measure" formControlName="measure" class="form-control" placeholder="Ürün Ölçülerini Girin"
+                      >
+                    <span class="help-block" *ngIf="productAddForm.get('measure').hasError('required') && productAddForm.get('measure').touched">
+                      Ölçü Girmek Zorunludur</span>
+                  </div>
+                <div class="form-group">
+                    <app-ngx-editor class="form-control" id="description" 
+                    name="description"
+                     [placeholder]="'Buraya Açıklama Giriniz.'"
+                      formControlName="description"
+                       [spellcheck]="true"
+                       [minHeight]="50"
+                      >
+                    </app-ngx-editor>
+                    <span class="help-block" *ngIf="productAddForm.get('description').hasError('required') && productAddForm.get('description').touched">
+                        Açıklama Girmek Zorunludur</span>
+                </div>
+                  <!-- <div class="form-group">       
+                      <select id="interior" class="form-control" formControlName="interior" name="interior">
+                          <option  value="true">İç Dekor Ürünü</option>       
+                          <option  value="false">Dış Dekor Ürünü</option>
+                        </select> 
+                    <span class="help-block" *ngIf="productAddForm.get('interior').hasError('required') && productAddForm.get('interior').touched">
+                      Ürün Tipi Seçmek Zorunludur.</span>
+                  </div>  -->
+                  <div class="form-group">         
+                      <select id="categoryId" class="form-control" formControlName="categoryId" name="categoryId">
+                         <option value="" selected="selected" disabled> Seçin</option>
+                          <option *ngFor="let category of categoriesOut" value="{{category.id}}"> {{category.categoryName}} </option>
+                            
+                      </select> 
+                    <span class="help-block" *ngIf="productAddForm.get('categoryId').hasError('required') && productAddForm.get('categoryId').touched">
+                      Kategori Seçmek Zorunludur.</span>
+                  </div> 
+          
+                  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!productAddForm.valid">Ekle</button>
+                  <h6>{{productAddForm.value|json}}</h6>
+                  <h6>{{productAddForm.status|json}}</h6>
+          
+                </form>
+          
+          
+              </div>
+            </div>
+          </main>
+  
+  
+    </mat-tab>
+    <mat-tab label="Diğer Ürünler">
+        <main role="main">
+            <div class="container">
+              <div class="row">
+                <form [formGroup]="productAddForm" (ngSubmit)="addProduct(2)" class="form-cityadd">
+                  <h2 class="mt-3 pt-3"> Yeni Bir Ürün Ekle</h2>
+                  <div class="form-group">
+                    <input type="text" id="title" formControlName="title" class="form-control" placeholder="Ürün İsmi Girin"
+                      >
+                    <span class="help-block" *ngIf="productAddForm.get('title').hasError('required') && productAddForm.get('title').touched">
+                      Ürün Adı Girmek Zorunludur</span>
+                  </div>
+          
+                  <div class="form-group">
+                      <label for="file">Resim Seçin</label><br>
+                      <input type="file" id="filePicker" (change)="handleFileSelect($event)" id="productImage" formControlName="productImage" accept="image/x-png,image/gif,image/jpeg">
+                  </div>
+                  <!-- <div class="form-group">
+                      <app-ngx-editor class="form-control" id="description" name="description" [placeholder]="'Buraya Ürün Açıklaması Giriniz.'"
+                        formControlName="description" [spellcheck]="true">
+                      </app-ngx-editor>
+            
+                      <span class="help-block" *ngIf="productAddForm.get('description').hasError('required') && productAddForm.get('description').touched">
+                        Not Girmek Zorunludur.</span>
+                    </div> -->
+                  <div class="form-group">
+                    <input type="text" id="measure" formControlName="measure" class="form-control" placeholder="Ürün Ölçülerini Girin"
+                      >
+                    <span class="help-block" *ngIf="productAddForm.get('measure').hasError('required') && productAddForm.get('measure').touched">
+                      Ölçü Girmek Zorunludur</span>
+                  </div>
+                <div class="form-group">
+                   <app-ngx-editor class="form-control" id="description" 
+                  name="description"
+                   [placeholder]="'Buraya Açıklama Giriniz.'"
+                    formControlName="description"
+                     [spellcheck]="true"
+                     [minHeight]="50"
+                    >
+                  </app-ngx-editor>
+                    <span class="help-block" *ngIf="productAddForm.get('description').hasError('required') && productAddForm.get('description').touched">
+                        Açıklama Girmek Zorunludur</span>
+                </div>
+                  <!-- <div class="form-group">       
+                      <select id="interior" class="form-control" formControlName="interior" name="interior">
+                          <option  value="true">İç Dekor Ürünü</option>       
+                          <option  value="false">Dış Dekor Ürünü</option>
+                        </select> 
+                    <span class="help-block" *ngIf="productAddForm.get('interior').hasError('required') && productAddForm.get('interior').touched">
+                      Ürün Tipi Seçmek Zorunludur.</span>
+                  </div>  -->
+                  <div class="form-group">         
+                      <select id="categoryId" class="form-control" formControlName="categoryId" name="categoryId">
+                         <option value="" selected="selected" disabled> Seçin</option>
+                          <option *ngFor="let category of categoriesOther" value="{{category.id}}"> {{category.categoryName}} </option>
+                            
+                      </select> 
+                    <span class="help-block" *ngIf="productAddForm.get('categoryId').hasError('required') && productAddForm.get('categoryId').touched">
+                      Kategori Seçmek Zorunludur.</span>
+                  </div> 
+          
+                  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!productAddForm.valid">Ekle</button>
+                  <h6>{{productAddForm.value|json}}</h6>
+                  <h6>{{productAddForm.status|json}}</h6>
+          
+                </form>
+          
+          
+              </div>
+            </div>
+          </main>
+  
+  
+    </mat-tab>
+  </mat-tab-group>
+  
