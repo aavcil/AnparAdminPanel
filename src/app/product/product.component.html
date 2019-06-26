@@ -2,7 +2,7 @@
   <mat-tab label="Tümü">
     <div class="container">
       <div class="row">
-        <div class="col-md-3" *ngFor="let product of products" style="padding:2%;">
+        <div class="col-md-3" *ngFor="let product of products | async" style="padding:2%;">
           <h2>{{product.title}}</h2>
           <div class="card mb-4 shadow-sm">
             <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
@@ -12,13 +12,13 @@
               <p class="card-text"> {{product.measure}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-danger left">SİL</button>
+                  <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                 </div>
               </div>
-              <div style="text-align: right" *ngIf="product.titleId==0">
+              <div style="text-align: right" *ngIf="product.titleId==1">
                 <span class="badge badge-pill badge-success">İç Mekan Ürünü</span>
               </div>
-              <div style="text-align: right" *ngIf="product.titleId==1">
+              <div style="text-align: right" *ngIf="product.titleId==3">
                 <span class="badge badge-pill badge-warning">Dış Mekan Ürünü</span>
               </div>
               <div style="text-align: right" *ngIf="product.titleId==2">
@@ -33,7 +33,7 @@
   <mat-tab label="İç Mekan Ürünler">
     <div class="container">
       <div class="row">
-        <div class="col-md-3" *ngFor="let product of in" style="padding:2%;">
+        <div class="col-md-3" *ngFor="let product of in | async" style="padding:2%;">
          
             <h2>{{product.title}}</h2>
             <div class="card mb-4 shadow-sm">
@@ -44,7 +44,7 @@
                 <p class="card-text"> {{product.measure}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-danger left">SİL</button>
+                    <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                   </div>
                 </div>
                 <div style="text-align: right">
@@ -64,7 +64,7 @@
 
       <div class="container">
           <div class="row">
-            <div class="col-md-3" *ngFor="let product of out" style="padding:2%;">
+            <div class="col-md-3" *ngFor="let product of out | async" style="padding:2%;">
              
                 <h2>{{product.title}}</h2>
                 <div class="card mb-4 shadow-sm">
@@ -75,7 +75,7 @@
                     <p class="card-text"> {{product.measure}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-danger left">SİL</button>
+                        <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                       </div>
                     </div>
                
@@ -94,7 +94,7 @@
 
       <div class="container">
           <div class="row">
-            <div class="col-md-3" *ngFor="let product of others" style="padding:2%;">
+            <div class="col-md-3" *ngFor="let product of others | async" style="padding:2%;">
              
                 <h2>{{product.title}}</h2>
                 <div class="card mb-4 shadow-sm">
@@ -105,7 +105,7 @@
                     <p class="card-text"> {{product.measure}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-danger left">SİL</button>
+                        <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                       </div>
                     </div>
                

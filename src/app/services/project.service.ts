@@ -33,4 +33,8 @@ export class ProjectService {
       this.alertifyService.success("Resimler Başarıyla Eklendi.");
     });
   }
+
+  deleteProject(id){
+    return this.HttpClient.delete(this.path + "Project?id="+id);
+    }
 }

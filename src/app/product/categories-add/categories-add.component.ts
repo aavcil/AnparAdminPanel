@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms"
 import { Categories } from 'src/app/models/Categories';
 import { ProductService } from 'src/app/services/product.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -17,18 +18,20 @@ export class CategoriesAddComponent implements OnInit {
   category: Categories
   categoriesAddForm: FormGroup;
 
-  categories: Categories[];
-  in: Categories[];
-  out: Categories[];
-  others: Categories[];
+  // categories: Categories[];
+  // in: Categories[];
+  // out: Categories[];
+  // others: Categories[];
+  public categories:BehaviorSubject<Categories[]>=new BehaviorSubject(null);
+  public in:BehaviorSubject<Categories[]>=new BehaviorSubject(null);
+  public out:BehaviorSubject<Categories[]>=new BehaviorSubject(null);
+  public others:BehaviorSubject<Categories[]>=new BehaviorSubject(null);
+
 
 
   ngOnInit() {
     this.createCategoryForm();
-    this.productService.getCategories().subscribe(x => { this.categories = x; });
-    this.productService.getCategoriesByTitle(0).subscribe(a => { this.in = a });
-    this.productService.getCategoriesByTitle(1).subscribe(a => { this.out = a });
-    this.productService.getCategoriesByTitle(2).subscribe(a => { this.others = a });
+    this.getCategories();
 
   }
   createCategoryForm() {
@@ -42,15 +45,21 @@ export class CategoriesAddComponent implements OnInit {
     if (this.categoriesAddForm.valid) {
       this.category = Object.assign({}, this.categoriesAddForm.value);
       this.productService.addCategory(this.category);
+      this.getCategories();
     }
+  }
+
+  getCategories(){
+    this.productService.getCategories().subscribe(x => { this.categories.next(x); });
+    this.productService.getCategoriesByTitle(0).subscribe(a => { this.in.next(a); });
+    this.productService.getCategoriesByTitle(1).subscribe(a => { this.out.next(a); });
+    this.productService.getCategoriesByTitle(2).subscribe(a => { this.others.next(a); });
   }
   delete(id) {
     this.productService.deleteCategory(id).subscribe(x => {
       if (x) {
         this.alertify.success("Kategori Silme İşlemi Başarılı.");
-        setInterval(x => {
-          location.reload();
-        }, 1000);
+        this.getCategories();
       }
       else {
         this.alertify.error("Kategori Silme İşlemi Başarısız.");

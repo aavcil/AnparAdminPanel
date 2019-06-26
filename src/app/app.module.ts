@@ -25,6 +25,7 @@ import localeTr from '@angular/common/locales/tr';
 import { registerLocaleData } from '@angular/common';
 import { ProjectAddComponent } from './projects/project-add/project-add.component';
 import { PhotoAddComponent } from './projects/project-add/photo-add/photo-add.component';
+import { TechnicalInfoComponent } from './TechnicalInfo/TechnicalInfo.component';
 registerLocaleData(localeTr, 'tr');
 @NgModule({
    declarations: [
@@ -37,7 +38,8 @@ registerLocaleData(localeTr, 'tr');
       ProjectsComponent,
       ProjectDetailComponent,
       ProjectAddComponent,
-      PhotoAddComponent
+      PhotoAddComponent,
+      TechnicalInfoComponent
    ],
    imports: [
       BrowserModule,
@@ -52,8 +54,7 @@ registerLocaleData(localeTr, 'tr');
       NgxGalleryModule
    ],
    providers: [
-      AlertifyService,
-      { provide: LOCALE_ID, useValue: "tr-TR" }
+      AlertifyService
    ],
    bootstrap: [
       AppComponent

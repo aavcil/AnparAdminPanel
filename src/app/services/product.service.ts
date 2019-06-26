@@ -53,4 +53,7 @@ export class ProductService {
   deleteCategory(id){
   return this.HttpClient.delete(this.path + "Product/deleteCategory?id="+id);
   }
+  deleteProduct(id){
+    return this.HttpClient.delete(this.path + "Product?id="+id);
+    }
 }

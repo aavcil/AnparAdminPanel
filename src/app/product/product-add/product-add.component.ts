@@ -18,18 +18,15 @@ export class ProductAddComponent implements OnInit {
   product: ProductAdd;
   categoriesIn: Categories[];
   categoriesOther: Categories[];
-
   categoriesOut: Categories[];  
   productAddForm: FormGroup;
   fileToUpload: File;
   base64textString:string;
   ngOnInit() {
     this.createProductForm();
-
-    this.productService.getCategoriesByTitle(0).subscribe(x=>{this.categoriesIn=x});
+    this.productService.getCategoriesByTitle(1).subscribe(x=>{this.categoriesIn=x});
     this.productService.getCategoriesByTitle(2).subscribe(x=>{this.categoriesOther=x});    
-
-    this.productService.getCategoriesByTitle(1).subscribe(x=>{this.categoriesOut=x});
+    this.productService.getCategoriesByTitle(3).subscribe(x=>{this.categoriesOut=x});
   }
 
   createProductForm() {
