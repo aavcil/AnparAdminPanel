@@ -51,7 +51,7 @@ export class CategoriesAddComponent implements OnInit {
 
   getCategories(){
     this.productService.getCategories().subscribe(x => { this.categories.next(x); });
-    this.productService.getCategoriesByTitle(0).subscribe(a => { this.in.next(a); });
+    this.productService.getCategoriesByTitle(3).subscribe(a => { this.in.next(a); });
     this.productService.getCategoriesByTitle(1).subscribe(a => { this.out.next(a); });
     this.productService.getCategoriesByTitle(2).subscribe(a => { this.others.next(a); });
   }

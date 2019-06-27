@@ -23,4 +23,8 @@ export class TechnicalInfoService {
     this.alertifyService.success("Teknik Bilgi Başarıyla Eklendi.");
 
   }
+  deleteInfo(id){
+    return this.HttpClient.delete(this.path + "Product?id="+id);
+    }
 }
+  
