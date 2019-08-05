@@ -1,13 +1,39 @@
 <div class="container">
- 
+
     <div class="navbar navbar-default">
         <div class="navbar-header">
             <a class="navbar-brand" href>Projeye Resim Ekleme (Çoklu seçim yapılabilir)</a>
         </div>
     </div>
- 
+
     <div class="row">
-        <input type='file' (change)="onSelectFile($event)" multiple>
+        <!-- <input type='file' (change)="onSelectFile($event)" multiple> -->
+        <image-upload style="width:100%" [max]="100" [buttonCaption]="'Resim Seç'"
+            [dropBoxMessage]="'Resimleri Buraya Sürükleyin veya Yandaki Butondan Resim Seçin.'"
+            [clearButtonCaption]="'Hepsini Sil'"
+            [fileTooLargeMessage]="'Eklemek istediğiniz resim veya resimlerin boyutu çok büyük!'"
+            [extensions]="['jpg','png','gif','svg','jpeg']" [class]="'customClass'" [preview]="false"
+            (removed)="onRemoved($event)" (uploadFinished)="onUploadFinished($event)"
+            (uploadStateChanged)="onUploadStateChanged($event)">
+        </image-upload>
+
+        <div class="container" *ngIf="this.PhotoList!=null">
+            <div class="row">
+                <div class="col" *ngFor="let item of PhotoList">
+                    <div class="alert alert-dismissible alert-light ">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{item.file.name}}</strong> <br>
+                        <img style="height: 200px; width: 100%; display: block;" src="{{item.src}}" alt="Card image">
+                        <br>
+                        <div class="custom-control custom-radio">
+                                <input type="radio" id="{{item.file.name}}" name="customRadio" class="custom-control-input" [ng-change]="onFilterChange($event)">
+                                <label class="custom-control-label" for="{{item.file.name}}">Proje Ana Sayfa Görseli</label>
+                              </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
- 
+
 </div>

@@ -26,6 +26,8 @@ import { registerLocaleData } from '@angular/common';
 import { ProjectAddComponent } from './projects/project-add/project-add.component';
 import { PhotoAddComponent } from './projects/project-add/photo-add/photo-add.component';
 import { TechnicalInfoComponent } from './TechnicalInfo/TechnicalInfo.component';
+import { ImageUploadModule } from "angular2-image-upload";
+
 registerLocaleData(localeTr, 'tr');
 @NgModule({
    declarations: [
@@ -46,6 +48,7 @@ registerLocaleData(localeTr, 'tr');
       HttpClientModule,
       FormsModule,
       NgxEditorModule,
+      ImageUploadModule.forRoot(),
       ReactiveFormsModule,
       MatTabsModule,
       BrowserAnimationsModule,

@@ -27,6 +27,7 @@
     "alertifyjs": "^1.11.2",
     "angular-alert-module": "^2.0.3",
     "angular-jwt": "^0.1.10",
+    "angular2-image-upload": "^1.0.0-rc.2",
     "angular2-jwt": "^0.2.3",
     "bootstrap": "^4.3.1",
     "bootswatch": "^4.3.1",

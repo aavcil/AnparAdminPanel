@@ -1,2 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+/deep/ .customClass {
+    background-color: #dd3;
+    border-radius: 5px;
+    margin:5px;
+    width: 100%; 
+}
+
+.customClass .img-ul-upload {
+    background-color: #e30613 !important;
+    width: 15%;
+}
+
+.customClass .img-ul-clear {
+    background-color: #1786aa !important;
+}
+
+.customClass .img-ul-drag-box-msg {
+    color: #e30613 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    border-style: dashed;
+    border-width: 1;
+    font-size: x-large;
+    width:70%;
+    height: 200px;
+}
+
+.customClass .img-ul-container {
+    background-color: transparent !important;
+    width: 100%;
+}

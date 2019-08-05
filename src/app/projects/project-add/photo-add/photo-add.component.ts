@@ -3,6 +3,7 @@ import { Photo } from 'src/app/models/Photo';
 import { FileUploader } from 'ng2-file-upload';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-photo-add',
@@ -12,18 +13,31 @@ import { ProjectService } from 'src/app/services/project.service';
 export class PhotoAddComponent implements OnInit {
   @ViewChild("fileInput") fileInput;
   constructor(   private activatedRoute: ActivatedRoute,private projectService:ProjectService,private router: Router) { }
+  PhotoList:any[]=[];
   photos: Photo;
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   currentProject:any;
   base64textString:string;
   urls:any = [];
+
   ngOnInit() {
     this.activatedRoute.params.subscribe(params=>{
       this.currentProject=params["id"];
     })
     this.initializeUploader();
   }
+  onUploadFinished(event){   
+    console.log(event);
+      this.PhotoList.push(event);
+  }
+  onRemoved(event){
+    console.log(event);
+  }
+  onFilterChange(event){
+    console.log(event);
+  }
+  
   initializeUploader() {
     this.uploader = new FileUploader({
       isHTML5: true,
