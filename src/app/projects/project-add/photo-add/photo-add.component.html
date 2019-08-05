@@ -13,23 +13,36 @@
             [clearButtonCaption]="'Hepsini Sil'"
             [fileTooLargeMessage]="'Eklemek istediğiniz resim veya resimlerin boyutu çok büyük!'"
             [extensions]="['jpg','png','gif','svg','jpeg']" [class]="'customClass'" [preview]="false"
-            (removed)="onRemoved($event)" (uploadFinished)="onUploadFinished($event)"
+            (removed)="allRemoved()" (uploadFinished)="onUploadFinished($event)"
             (uploadStateChanged)="onUploadStateChanged($event)">
         </image-upload>
 
         <div class="container" *ngIf="this.PhotoList!=null">
             <div class="row">
-                <div class="col" *ngFor="let item of PhotoList">
+                <div class="col-sm-4" *ngFor="let item of PhotoList">
                     <div class="alert alert-dismissible alert-light ">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <button type="button" class="close" data-dismiss="alert" (click)="onRemoved(item)">&times;</button>
                         <strong>{{item.file.name}}</strong> <br>
-                        <img style="height: 200px; width: 100%; display: block;" src="{{item.src}}" alt="Card image">
+                        <img style="height: 200px; width:100%; display: block;" src="{{item.src}}"  alt="Card image">
                         <br>
                         <div class="custom-control custom-radio">
-                                <input type="radio" id="{{item.file.name}}" name="customRadio" class="custom-control-input" [ng-change]="onFilterChange($event)">
-                                <label class="custom-control-label" for="{{item.file.name}}">Proje Ana Sayfa Görseli</label>
-                              </div>
+                            <input type="radio" id="{{item.file.name}}" value="{{item.file.name}}" (change)="onFilterChange(item.file.name)" name="customRadio" class="custom-control-input"
+                                [(ngModel)]="radioButtonChecked">
+                            <label class="custom-control-label" for="{{item.file.name}}">Proje Ana Sayfa Görseli</label>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+
+                </div>
+                <div class="col-sm-4">
+
                 </div>
             </div>
         </div>

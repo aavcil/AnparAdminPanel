@@ -20,22 +20,27 @@ export class PhotoAddComponent implements OnInit {
   currentProject:any;
   base64textString:string;
   urls:any = [];
+  radioButtonChecked:any;
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params=>{
       this.currentProject=params["id"];
-    })
+    });
     this.initializeUploader();
   }
   onUploadFinished(event){   
-    console.log(event);
-      this.PhotoList.push(event);
+      this.PhotoList.push(event);     
   }
   onRemoved(event){
-    console.log(event);
+    const index = this.PhotoList.indexOf(event, 0);
+    if(index>-1)
+    this.PhotoList.splice(index,1);
   }
   onFilterChange(event){
-    console.log(event);
+    this.radioButtonChecked=event;
+  }
+  allRemoved(){
+    this.PhotoList=[];
   }
   
   initializeUploader() {
