@@ -28,10 +28,8 @@ export class ProjectService {
     });
   }
 
-  addPhoto(photo) {
-    this.HttpClient.post(this.path + "Project/AddPhoto", photo).subscribe(data => {
-      this.alertifyService.success("Resimler Başarıyla Eklendi.");
-    });
+  async addPhoto(photo) {
+    await this.HttpClient.post(this.path + "Project/AddPhoto", photo).subscribe(x=>{});
   }
 
   deleteProject(id){
