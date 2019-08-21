@@ -28,16 +28,11 @@ export class ProductService {
   getProductByTitle(id): Observable<Product[]> {
     return this.HttpClient.get<Product[]>(this.path + "Product/getProductsByTitle?titleId=" + id);
   }
-  getProductByTrush(): Observable<Product[]> {
-    return this.HttpClient.get<Product[]>(this.path + "Product/getTrashProduct");
-  }
-  moveTrashOrMain(productId): Observable<Product> {
-    return this.HttpClient.get<Product>(this.path + "Product/MoveTrashOrMain/" + productId);
-  }
+
   getCategories(): Observable<Categories[]> {
     return this.HttpClient.get<Categories[]>(this.path + "Product/getCategories");
   }
-
+  
   getCategoriesByTitle(id): Observable<Categories[]> {
     return this.HttpClient.get<Categories[]>(this.path + "Product/getCategoriesByTitle?titleId=" + id);
   }
@@ -55,10 +50,10 @@ export class ProductService {
       this.router.navigateByUrl("/product");
     });
   }
-  deleteCategory(id) {
-    return this.HttpClient.delete(this.path + "Product/deleteCategory?id=" + id);
+  deleteCategory(id){
+  return this.HttpClient.delete(this.path + "Product/deleteCategory?id="+id);
   }
-  deleteProduct(id) {
-    return this.HttpClient.delete(this.path + "Product?id=" + id);
-  }
+  deleteProduct(id){
+    return this.HttpClient.delete(this.path + "Product?id="+id);
+    }
 }

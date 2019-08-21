@@ -12,7 +12,7 @@
               <p class="card-text"> {{product.measure}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" (click)="goTrash(product.id)" class="btn btn-danger left">SİL</button>
+                  <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                 </div>
               </div>
               <div style="text-align: right" *ngIf="product.titleId==1">
@@ -44,7 +44,7 @@
                 <p class="card-text"> {{product.measure}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" (click)="goTrash(product.id)" class="btn btn-danger left">SİL</button>
+                    <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                   </div>
                 </div>
                 <div style="text-align: right">
@@ -75,7 +75,7 @@
                     <p class="card-text"> {{product.measure}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                  <button type="button" (click)="goTrash(product.id)" class="btn btn-danger left">SİL</button>
+                        <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                       </div>
                     </div>
                
@@ -105,7 +105,7 @@
                     <p class="card-text"> {{product.measure}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                      <button type="button" (click)="goTrash(product.id)" class="btn btn-danger left">SİL</button>
+                        <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger left">SİL</button>
                       </div>
                     </div>
                
