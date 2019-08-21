@@ -5,7 +5,11 @@
     <div class="col" *ngFor="let item of projects | async" style="padding-top:30px;">
 
       <div class="card" style="width: 18rem;">
-        <img src="https://localhost:44386/{{item.photos[0].url}}" class="card-img-top" alt="...">
+        <div *ngFor="let img of item.photos">
+
+        <img *ngIf="img.isMain" src="https://localhost:44386/{{img.url}}" class="card-img-top" alt="...">
+
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{item.title}}</h5>
           <p class="card-text">{{item.description | slice:0:100}}..</p>

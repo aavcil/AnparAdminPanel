@@ -32,6 +32,10 @@ export class ProjectService {
     await this.HttpClient.post(this.path + "Project/AddPhoto", photo).subscribe(x=>{});
   }
 
+  async updateProject(project) {
+    await this.HttpClient.post(this.path + "Project/UpdateProject", project).subscribe(x=>{});
+  }
+
   deleteProject(id){
     return this.HttpClient.delete(this.path + "Project?id="+id);
     }

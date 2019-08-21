@@ -9,6 +9,7 @@ import { ProjectDetailComponent } from "./projects/project-detail/project-detail
 import { ProjectAddComponent } from "./projects/project-add/project-add.component";
 import { PhotoAddComponent } from "./projects/project-add/photo-add/photo-add.component";
 import { TechnicalInfoComponent } from "./TechnicalInfo/TechnicalInfo.component";
+import { ProjectUpdateComponent } from "./projects/project-update/project-update.component";
 
 export const appRoutes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -22,7 +23,7 @@ export const appRoutes: Routes = [
   {path: 'product' , component: ProductComponent},
   {path: 'projects' , component: ProjectsComponent},
   {path: 'technicalInfo' , component: TechnicalInfoComponent},
-
+  {path: 'projectUpdate/:id' , component: ProjectUpdateComponent},
   {path: 'projectDetail/:id' , component: ProjectDetailComponent},
   {path: 'addPhoto/:id' , component: PhotoAddComponent},
 
