@@ -27,6 +27,7 @@ import { ProjectAddComponent } from './projects/project-add/project-add.componen
 import { PhotoAddComponent } from './projects/project-add/photo-add/photo-add.component';
 import { TechnicalInfoComponent } from './TechnicalInfo/TechnicalInfo.component';
 import { ImageUploadModule } from "angular2-image-upload";
+import { ProductTrashComponent } from './trash/product-trash/product-trash.component';
 
 registerLocaleData(localeTr, 'tr');
 @NgModule({
@@ -41,7 +42,8 @@ registerLocaleData(localeTr, 'tr');
       ProjectDetailComponent,
       ProjectAddComponent,
       PhotoAddComponent,
-      TechnicalInfoComponent
+      TechnicalInfoComponent,
+      ProductTrashComponent
    ],
    imports: [
       BrowserModule,

@@ -9,6 +9,7 @@ import { ProjectDetailComponent } from "./projects/project-detail/project-detail
 import { ProjectAddComponent } from "./projects/project-add/project-add.component";
 import { PhotoAddComponent } from "./projects/project-add/photo-add/photo-add.component";
 import { TechnicalInfoComponent } from "./TechnicalInfo/TechnicalInfo.component";
+import { ProductTrashComponent } from "./trash/product-trash/product-trash.component";
 
 export const appRoutes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -27,6 +28,7 @@ export const appRoutes: Routes = [
   {path: 'addPhoto/:id' , component: PhotoAddComponent},
 
   {path: 'projectAdd' , component: ProjectAddComponent},
+  {path: 'trashProduct' , component: ProductTrashComponent},
 
 
   {path: 'productAdd' , component: ProductAddComponent},

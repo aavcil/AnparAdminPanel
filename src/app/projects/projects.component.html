@@ -5,10 +5,12 @@
     <div class="col" *ngFor="let item of projects | async" style="padding-top:30px;">
 
       <div class="card" style="width: 18rem;">
-        <img src="https://localhost:44386/{{item.photos[0].url}}" class="card-img-top" alt="...">
+        <div *ngFor="let a of item.photos">
+        <img *ngIf="a.isMain" src="https://localhost:44386/{{a.url}}" class="card-img-top" alt="...">
+      </div>
         <div class="card-body">
           <h5 class="card-title">{{item.title}}</h5>
-          <p class="card-text">{{item.description | slice:0:100}}..</p>
+       
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"> Lokasyon : <strong> {{item.location}}</strong></li>

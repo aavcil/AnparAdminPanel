@@ -13,7 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private productService: ProductService, private alertify: AlertifyService) { }
+  constructor(private _productService: ProductService, private _alertifyService: AlertifyService) { }
 
   // products: Product[];
   // in: Product[];
@@ -30,19 +30,24 @@ export class ProductComponent implements OnInit {
     this.getProducts();
     
   }
-  deleteProduct(id: number) {
-    this.productService.deleteProduct(id).subscribe(x => {
-      if (x) {
-        this.alertify.success("Silme İşlemi Başarılı");
-        this.getProducts();
+  goTrash(id){
+    this._productService.moveTrashOrMain(id).subscribe(x=>{
+      if(x!=null)
+      {
+        this._alertifyService.success("Çöp Kutusuna Gönderildi.")
+      }else{
+        this._alertifyService.error("Çöp Kutusuna Gönderilemedi.")
       }
+    this.getProducts();
     });
+     
   }
 
+
   getProducts(){
-    this.productService.getProducts().subscribe(x => { this.products.next(x); });
-    this.productService.getProductByTitle(1).subscribe(a => { this.in.next(a); });
-    this.productService.getProductByTitle(3).subscribe(a => { this.out.next(a); });
-    this.productService.getProductByTitle(2).subscribe(a => { this.others.next(a); });
+    this._productService.getProducts().subscribe(x => { this.products.next(x); });
+    this._productService.getProductByTitle(1).subscribe(a => { this.in.next(a); });
+    this._productService.getProductByTitle(3).subscribe(a => { this.out.next(a); });
+    this._productService.getProductByTitle(2).subscribe(a => { this.others.next(a); });
   }
 }
