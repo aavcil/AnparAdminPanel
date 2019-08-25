@@ -4,6 +4,7 @@ import { Categories } from 'src/app/models/Categories';
 import { ProductService } from 'src/app/services/product.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { BehaviorSubject } from 'rxjs';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -57,8 +58,11 @@ export class CategoriesAddComponent implements OnInit {
   }
   delete(id) {
     this.productService.deleteCategory(id).subscribe(x => {
-      if (x) {
-        this.alertify.success("Kategori Silme İşlemi Başarılı.");
+      console.log(x);
+      if (x["value"]) {        
+        this.alertify.warning("Kategoriye ait ürünler var.");
+      }else if(x){
+        this.alertify.success("Kategori silme işlemi başarılı.");
         this.getCategories();
       }
       else {
